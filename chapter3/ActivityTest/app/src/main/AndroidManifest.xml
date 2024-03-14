@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ActivityTest"
+        tools:targetApi="31">
+        <!--
+            所有的Activity都要在AndroidManifest.xml文件中进行注册才能生效
+
+            使用android:label指定Activity中标题栏的内容，标题栏是显示在Activity最顶部的。
+            需要注意的是，给主Activity指定的label不仅会成为标题栏中的内容，还会成为启动器（Launcher）中应用程序显示的名称。
+        -->
+        <activity android:label="This is FirstActivity"
+            android:name=".FirstActivity"
+            android:exported="true">
+            <!--     指定此Activity为主Activity       -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
