@@ -2,6 +2,8 @@ package io.github.pvnk1u
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 
@@ -39,5 +41,28 @@ class FirstActivity : AppCompatActivity() {
              */
             Toast.makeText(this,"You clicked Button 1",Toast.LENGTH_SHORT).show()
         }
+    }
+
+    /**
+     * 重写创建显示菜单的方法
+     */
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        // 调用父类的getMenuInflater方法得到一个MenuInflater对象，再调用它的inflate方法就可以给当前Activity创建菜单了
+        // inflate接收两个参数：第一个参数用于指定通过哪一个资源文件来创建菜单，这里是传入自定义的R.menu.main；第二个参数是指定菜单项将添加到哪一个Menu当中
+        menuInflater.inflate(R.menu.main,menu)
+        // 最后返回true，表示允许创建的菜单显示出来，如果返回了false，创建的菜单将无法显示
+        return true
+    }
+
+    /**
+     * 定义菜单响应事件
+     */
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // 通过调用item.itemId来判断点击的是哪一个菜单项
+        when(item.itemId){
+            R.id.add_item -> Toast.makeText(this,"You Clicked Add",Toast.LENGTH_SHORT).show()
+            R.id.remove_item -> Toast.makeText(this,"You clicked Remove",Toast.LENGTH_SHORT).show()
+        }
+        return true
     }
 }
