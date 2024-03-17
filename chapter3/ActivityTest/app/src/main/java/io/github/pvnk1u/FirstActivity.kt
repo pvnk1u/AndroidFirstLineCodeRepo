@@ -41,6 +41,12 @@ class FirstActivity : AppCompatActivity() {
              */
             Toast.makeText(this,"You clicked Button 1",Toast.LENGTH_SHORT).show()
         }
+        /**
+         * 销毁Activity的方法：通过finish()方法
+         */
+       /* button1.setOnClickListener {
+            finish()
+        }*/
     }
 
     /**
