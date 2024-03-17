@@ -1,5 +1,6 @@
 package io.github.pvnk1u
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -39,7 +40,17 @@ class FirstActivity : AppCompatActivity() {
              * 第二个参数是Toast显示的文本内容。第三个参数是Toast显示的时
              * 长，有两个内置常量可以选择：Toast.LENGTH_SHORT和Toast.LENGTH_LONG。
              */
-            Toast.makeText(this,"You clicked Button 1",Toast.LENGTH_SHORT).show()
+            /*Toast.makeText(this,"You clicked Button 1",Toast.LENGTH_SHORT).show()*/
+
+            /**
+             * Intent是Android程序中各组件之间进行交互的一种重要方式，它不仅可以指明当前组件想要执
+             * 行的动作，还可以在不同组件之间传递数据。Intent一般可用于启动Activity、启动Service以
+             * 及发送广播等场景
+             */
+            // 创建一个Intent对象，第一个参数传入this也就是FirstActivity作为上下文，第二个参数传入SecondActivity::class.java作为目标Activity,
+            // 即在FirstActivity的基础上打开SecondActivity,Kotlin中 SecondActivity::class.java的写法就相当于Java中SecondActivity.class的写法
+            val intent = Intent(this,SecondActivity::class.java)
+            startActivity(intent)
         }
         /**
          * 销毁Activity的方法：通过finish()方法
