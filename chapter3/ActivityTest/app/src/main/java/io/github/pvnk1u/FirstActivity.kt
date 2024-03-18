@@ -49,7 +49,17 @@ class FirstActivity : AppCompatActivity() {
              */
             // 创建一个Intent对象，第一个参数传入this也就是FirstActivity作为上下文，第二个参数传入SecondActivity::class.java作为目标Activity,
             // 即在FirstActivity的基础上打开SecondActivity,Kotlin中 SecondActivity::class.java的写法就相当于Java中SecondActivity.class的写法
-            val intent = Intent(this,SecondActivity::class.java)
+            /*val intent = Intent(this,SecondActivity::class.java)
+            startActivity(intent)*/
+
+            /**
+             * 使用Intent的另一个构造函数，直接将action的字符串传了进去，表明想要启动能够响应io.pvnk1u.activitytest.ACTION_START这个action的Activity。
+             *
+             * android.intent.category.DEFAULT是一种默认的category，在调用startActivity()方法的时候会自动将这个category添加到Intent中。
+             */
+            val intent = Intent("io.pvnk1u.activitytest.ACTION_START")
+            // 默认情况下，intent的category是android.intent.category.DEFAULT，不用特殊指定，但是如果在AndroidManifest.xml中手动修改了category，则这里需要使用对应的category名字
+            intent.addCategory("io.pvnk1u.activitytest.MY_CATEGORY")
             startActivity(intent)
         }
         /**

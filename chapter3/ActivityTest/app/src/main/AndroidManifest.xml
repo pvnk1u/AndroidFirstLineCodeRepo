@@ -15,7 +15,18 @@
         <!--第二个Activity-->
         <activity
             android:name=".SecondActivity"
-            android:exported="false" />
+            android:exported="true" ><!--exported属性表示：当前Activity是否可以被另一个Application的组件启动：true允许被启动；false不允许被启动，这里必须是true才能被另外的Activity调用到-->
+            <intent-filter>
+                <!--指定当前Activity可以响应io.pvnk1u.activitytest.ACTION_START这个Action-->
+                <action android:name="io.pvnk1u.activitytest.ACTION_START" />
+                <!--category更精确地指明了当前Activity能够响应的Intent中还可能带有的category
+                只有<action>和<category>中的内容同时匹配Intent中指定的action和category时，这个Activity才能响应该Intent
+                -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <!--一个Activity可以指定多个category-->
+                <category android:name="io.pvnk1u.activitytest.MY_CATEGORY" />
+            </intent-filter>
+        </activity>
         <!--
             所有的Activity都要在AndroidManifest.xml文件中进行注册才能生效
 
