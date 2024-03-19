@@ -1,6 +1,7 @@
 package io.github.pvnk1u
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -43,6 +44,7 @@ class FirstActivity : AppCompatActivity() {
             /*Toast.makeText(this,"You clicked Button 1",Toast.LENGTH_SHORT).show()*/
 
             /**
+             * 第一种：显式Intent启动Activity，直接通过指定对应Activity的class启动
              * Intent是Android程序中各组件之间进行交互的一种重要方式，它不仅可以指明当前组件想要执
              * 行的动作，还可以在不同组件之间传递数据。Intent一般可用于启动Activity、启动Service以
              * 及发送广播等场景
@@ -53,13 +55,22 @@ class FirstActivity : AppCompatActivity() {
             startActivity(intent)*/
 
             /**
+             * 第二种：隐式Intent启动Activity
              * 使用Intent的另一个构造函数，直接将action的字符串传了进去，表明想要启动能够响应io.pvnk1u.activitytest.ACTION_START这个action的Activity。
              *
              * android.intent.category.DEFAULT是一种默认的category，在调用startActivity()方法的时候会自动将这个category添加到Intent中。
              */
-            val intent = Intent("io.pvnk1u.activitytest.ACTION_START")
+            /*val intent = Intent("io.pvnk1u.activitytest.ACTION_START")
             // 默认情况下，intent的category是android.intent.category.DEFAULT，不用特殊指定，但是如果在AndroidManifest.xml中手动修改了category，则这里需要使用对应的category名字
             intent.addCategory("io.pvnk1u.activitytest.MY_CATEGORY")
+            startActivity(intent)*/
+            /**
+             * 第三种：不仅可以启动自己程序内的Activity，还可以启动其他程序的Activity，使多个应用程序之间的功能共享成为可能
+             */
+            // 首先指定了Intent的action是Intent.ACTION_VIEW，这是一个Android系统内置的动作，其常量值为android.intent.action.VIEW。
+            val intent = Intent(Intent.ACTION_VIEW)
+            // 通过Uri.parse()方法将一个 网址字符串解析成一个Uri对象，再调用Intent的setData()方法将这个Uri对象传递进去。
+            intent.data = Uri.parse("https://www.baidu.com")
             startActivity(intent)
         }
         /**
