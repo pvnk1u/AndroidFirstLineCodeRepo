@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
@@ -82,10 +83,20 @@ class FirstActivity : AppCompatActivity() {
             /**
              * 调用其他Activity的时候向其他Activity传递数据
              */
-            val data = "Hello SecondActivity"
+            /*val data = "Hello SecondActivity"
             val intent = Intent(this,SecondActivity::class.java)
             intent.putExtra("extra_data",data)
-            startActivity(intent)
+            startActivity(intent)*/
+            /**
+             * 除了在调用其他Activity的时候传递数据，也可以获取调用的其他Activity返回的结果
+             * startActivityForResult()方法期望在Activity销毁的时候能够返回一个结果给上一个Activity。
+             *
+             * 获取返回结果需要在当前Activity中重写onActivityResult()方法
+             */
+            // startActivityForResult()方法接收两个参数：
+            // 第一个参数还是Intent；第二个参数是请求码，用于在之后的回调中判断数据的来源。
+            val intent = Intent(this,SecondActivity::class.java)
+            startActivityForResult(intent,1)
         }
         /**
          * 销毁Activity的方法：通过finish()方法
@@ -93,6 +104,28 @@ class FirstActivity : AppCompatActivity() {
        /* button1.setOnClickListener {
             finish()
         }*/
+    }
+
+    /**
+     * 重写这个方法来得到其他Activity返回的数据
+     *
+     * onActivityResult()方法带有3个参数：第一个参数requestCode，即我们在启动Activity
+     * 时传入的请求码；第二个参数resultCode，即我们在返回数据时传入的处理结果；第三个参
+     * 数data，即携带着返回数据的Intent。由于在一个Activity中有可能调用
+     * startActivityForResult()方法去启动很多不同的Activity，每一个Activity返回的数据都
+     * 会回调到onActivityResult()这个方法中，因此我们首先要做的就是通过检查
+     * requestCode的值来判断数据来源。确定数据是从SecondActivity返回的之后，我们再通过
+     * resultCode的值来判断处理结果是否成功。最后从data中取值并打印出来，这样就完成了向
+     * 上一个Activity返回数据的工作。
+     */
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode){
+            1 -> if (resultCode  == RESULT_OK){
+                val returnedData = data?.getStringExtra("data_return")
+                Log.d("FirstActivity","returned data is $returnedData")
+            }
+        }
     }
 
     /**
