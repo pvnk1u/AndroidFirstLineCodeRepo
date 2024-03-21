@@ -68,9 +68,16 @@ class FirstActivity : AppCompatActivity() {
              * 第三种：不仅可以启动自己程序内的Activity，还可以启动其他程序的Activity，使多个应用程序之间的功能共享成为可能
              */
             // 首先指定了Intent的action是Intent.ACTION_VIEW，这是一个Android系统内置的动作，其常量值为android.intent.action.VIEW。
-            val intent = Intent(Intent.ACTION_VIEW)
+            /*val intent = Intent(Intent.ACTION_VIEW)
             // 通过Uri.parse()方法将一个 网址字符串解析成一个Uri对象，再调用Intent的setData()方法将这个Uri对象传递进去。
             intent.data = Uri.parse("https://www.baidu.com")
+            startActivity(intent)*/
+            /**
+             * geo表示显示地理位置、tel表示拨打电话
+             * 程序中调用系统拨号界面
+             */
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse("tel:10086")
             startActivity(intent)
         }
         /**

@@ -21,6 +21,7 @@
                 <!--category为默认的category值-->
                 <category android:name="android.intent.category.DEFAULT" />
                 <!--在data标签中，通过android:scheme指定了数据的协议必须是https协议，这样ThirdActivity应该就和浏览器一样，能够响应一个打开网页的Intent了-->
+                <!--除了https协议外，还可以指定很多其他协议，比如geo表示显示地理位置、tel表示拨打电话-->
                 <data android:scheme="https" />
             </intent-filter>
         </activity>
