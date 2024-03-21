@@ -76,8 +76,15 @@ class FirstActivity : AppCompatActivity() {
              * geo表示显示地理位置、tel表示拨打电话
              * 程序中调用系统拨号界面
              */
-            val intent = Intent(Intent.ACTION_DIAL)
+            /*val intent = Intent(Intent.ACTION_DIAL)
             intent.data = Uri.parse("tel:10086")
+            startActivity(intent)*/
+            /**
+             * 调用其他Activity的时候向其他Activity传递数据
+             */
+            val data = "Hello SecondActivity"
+            val intent = Intent(this,SecondActivity::class.java)
+            intent.putExtra("extra_data",data)
             startActivity(intent)
         }
         /**
