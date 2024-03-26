@@ -1,14 +1,18 @@
 package io.github.pvnk1u
 
 import android.content.Intent
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+
 
 class FirstActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +34,23 @@ class FirstActivity : AppCompatActivity() {
          * onClick()方法中编写了。
          */
         val button1: Button = findViewById(R.id.button1)
+
+        /**
+         * 调用startActivityForResult并通过重写onActivityResult方法来实现获取其他Activity返回结果的方式已经不推荐使用
+         *
+         * 现在推荐使用的是通过registerForActivityResult方法创建执行器，然后通过执行器执行Intent对象的方式来打开新Activity并获取新Activity关闭时返回的结果
+         *
+         * 需要特别注意的是，通过registerForActivityResult方法创建执行器必须在生命周期STARTED之前调用，所以下面这段代码不能在button1.setOnClickListener()方法中创建
+         *
+         * 新打开的Activity中的返回数据的方式与旧的startActivityForResult、onActivityResult方法没有区别
+         */
+        var launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult(),ActivityResultCallback<ActivityResult>(){
+            // 新Activity关闭时返回数据将会触发下面的判断逻辑
+            if (it.resultCode == RESULT_OK){
+                var returnedData = it.data?.getStringExtra("data_return")
+                Log.d("FirstActivity","returned data is $returnedData")
+            }
+        })
         button1.setOnClickListener{
             /**
              * Toast提醒
@@ -95,8 +116,14 @@ class FirstActivity : AppCompatActivity() {
              */
             // startActivityForResult()方法接收两个参数：
             // 第一个参数还是Intent；第二个参数是请求码，用于在之后的回调中判断数据的来源。
+            /*val intent = Intent(this,SecondActivity::class.java)
+            startActivityForResult(intent,1)*/
+            /**
+             * startActivityForResult已在最新版本中弃用，需要使用registerForActivityResult替代
+             */
             val intent = Intent(this,SecondActivity::class.java)
-            startActivityForResult(intent,1)
+            launcher.launch(intent)
+
         }
         /**
          * 销毁Activity的方法：通过finish()方法
