@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity
 class FirstActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // 打印onCreate日志
+        Log.d("FirstActivity",this.toString())
         /**
          * 调用setContentView方法来给当前的Activity加载一个布局
          * 在setContentView()方法中，一般会传入一个布局文件的id。
@@ -121,8 +123,20 @@ class FirstActivity : AppCompatActivity() {
             /**
              * startActivityForResult已在最新版本中弃用，需要使用registerForActivityResult替代
              */
-            val intent = Intent(this,SecondActivity::class.java)
-            launcher.launch(intent)
+            /*val intent = Intent(this,SecondActivity::class.java)
+            launcher.launch(intent)*/
+            /**
+             * Activity默认启动模式为standard，在standard模式下，每当启
+             * 动一个新的Activity，它就会在返回栈中入栈，并处于栈顶的位置。对于使用standard模式的
+             * Activity，系统不会在乎这个Activity是否已经在返回栈中存在，每次启动都会创建一个该
+             * Activity的新实例。
+             */
+            // 再次启动当前Activity,每点击一次按钮，就会创建出一个新的FirstActivity实例。
+            val intent = Intent(this,FirstActivity::class.java)
+            startActivity(intent)
+            // 如果在AndroidManifest.xml中把FirstActivity的launchMode改为singleTop，
+            // 在启动Activity时如果发现返回栈的栈顶已经是该Activity，则认为可以直接使用它，不会再创建新的Activity实例。
+            // 不过当FirstActivity并未处于栈顶位置时，再启动FirstActivity还是会创建新的实例的。
 
         }
         /**
