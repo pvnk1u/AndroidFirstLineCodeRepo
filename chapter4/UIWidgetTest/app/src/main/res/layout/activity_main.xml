@@ -40,5 +40,29 @@
         android:textAllCaps="false"
         android:text="Button" />
 
+    <!--
+    EditText是程序用于和用户进行交互的另一个重要控件，它允许用户在控件里输入和编辑内容，并可以在程序中对这些内容进行处理。
+    EditText的应用场景应该算是非常普遍了，发短信、发微博、聊QQ等等，在进行这些操作时，不得不使用到EditText。-->
+
+    <!--
+    一些做得比较人性化的软件会在输入框里显示一些提示性的文字，一旦用户输入了任何内容，这些提示性的文字就会消失。
+    这种提示功能在Android里是非常容易实现的，我们甚至不需要做任何逻辑控制，因为系统已经帮我们都处理好了。
+    只需要使用android:hint属性即可指定一段提示性的文本。-->
+
+    <!--
+    随着输入的内容不断增多，EditText会被不断地拉长。这是由于EditText的高度指定的是wrap_content，
+    因此它总能包含住里面的内容，但是当输入的内容过多时，界面就会变得非常难看。
+    可以使用android:maxLines属性来指定EditText的最大行数，这样当输入的内容超过两行时，文本就会向上滚动，
+    EditText则不会再继续拉伸。
+    -->
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type Something here"
+        android:maxLines="2"
+        />
+
+
 
 </LinearLayout>
