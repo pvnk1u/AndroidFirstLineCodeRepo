@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--使用android:id给当前控件定义了一个唯一标识符，
+    然后使用android:layout_width和android:layout_height指定了控件的宽度和高度。
+    Android中所有的控件都具有这两个属性，可选值有3种：match_parent、wrap_content和固定值。
+    match_parent表示让当前控件的大小和父布局的大小一样，也就是由父布局来决定当前控件的大小。
+    wrap_content表示让当前控件的大小能够刚好包含住里面的内容，也就是由控件内容决定当前控件的大小。
+    固定值表示表示给控件指定一个固定的尺寸，单位一般用dp，这是一种屏幕密度无关的尺寸单位，
+    可以保证在不同分辨率的手机上显示效果尽可能地一致，如50 dp就是一个有效的固定值。-->
+
+    <!--TextView中的文字默认是居左上角对齐的，但是可以使用android:gravity来指定文字的对齐方式，
+    可选值有top、bottom、start、end、center等，可以用“|”来同时指定多个值，比如如果指定的是"center"，
+    效果等同于"center_vertical|center_horizontal"，表示文字在垂直和水平方向都居中对齐。-->
+
+    <!--另外，还可以通过android:textColor属性可以指定文字的颜色，通过android:textSize属性可以指定文字的大小。
+    文字大小要使用sp作为单位，这样当用户在系统中修改了文字显示尺寸时，应用程序中的文字大小也会跟着变化。-->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#00ff00"
+        android:textSize="24sp"
+        android:text="This is TextView"/>
+
+    <!--
+    Button是程序用于和用户进行交互的一个重要控件。它可配置的属性和TextView是差不多的。
+    -->
+
+    <!--Android系统默认会将按钮上的英文字母全部转换成大写，如果这不是想要的效果，
+    可以在XML中添加android:textAllCaps="false"这个属性，这样系统就会保留原始文字内容了。-->
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Button" />
+
+
+</LinearLayout>
