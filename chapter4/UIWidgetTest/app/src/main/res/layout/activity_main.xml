@@ -77,5 +77,27 @@
         android:layout_height="wrap_content"
         android:src="@drawable/img_1" />
 
+    <!--
+    ProgressBar用于在界面上显示一个进度条，表示程序正在加载一些数据。
 
+    这样就会在屏幕上出现一个不断旋转的进度条。旋转的进度条表明程序正在加载数据，那数据总会有加载完的时候吧，
+    如何才能让进度条在数据加载完成时消失呢？这里就需要用到一个新的知识点：Android控件的可见属性。
+    所有的Android控件都具有这个属性，可以通过android:visibility进行指定，
+    可选值有3种：visible、invisible和gone。
+    visible表示控件是可见的，这个值是默认值，不指定android:visibility时，控件都是可见的。
+    invisible表示控件不可见，但是它仍然占据着原来的位置和大小，可以理解成控件变成透明状态了。
+    gone则表示控件不仅不可见，而且不再占用任何屏幕空间。
+
+    可以通过代码来设置控件的可见性，使用的是setVisibility()方法，
+    允许传入View.VISIBLE、View.INVISIBLE和View.GONE这3种值。
+
+    另外，还可以给ProgressBar指定不同的样式，默认是圆形进度条，通过style属性可以将它指定成水平进度条
+    -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:max="100"
+        />
 </LinearLayout>

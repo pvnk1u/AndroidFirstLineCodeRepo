@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -42,8 +43,22 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
                 /**
                  * 点击逻辑，实现点击按钮时动态地更改ImageView中图片的功能
                  */
-                val imageView: ImageView = findViewById(R.id.imageView)
-                imageView.setImageResource(R.drawable.img_2)
+                /*val imageView: ImageView = findViewById(R.id.imageView)
+                imageView.setImageResource(R.drawable.img_2)*/
+                /**
+                 * 点击逻辑，实现点击一下按钮让进度条消失，再点击一下按钮让进度条出现
+                 */
+                /*val progressBar: ProgressBar = findViewById(R.id.progressBar)
+                if (progressBar.visibility == View.VISIBLE){
+                    progressBar.visibility = View.GONE
+                }else{
+                    progressBar.visibility = View.VISIBLE
+                }*/
+                /**
+                 * 点击逻辑，实现点击一次按钮，进度条进度加10
+                 */
+                val  progressBar : ProgressBar = findViewById(R.id.progressBar)
+                progressBar.progress += 10
             }
         }
     }
