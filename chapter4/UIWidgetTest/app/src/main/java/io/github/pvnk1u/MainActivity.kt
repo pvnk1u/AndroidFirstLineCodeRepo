@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity(),View.OnClickListener {
@@ -57,8 +58,29 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
                 /**
                  * 点击逻辑，实现点击一次按钮，进度条进度加10
                  */
-                val  progressBar : ProgressBar = findViewById(R.id.progressBar)
-                progressBar.progress += 10
+                /*val  progressBar : ProgressBar = findViewById(R.id.progressBar)
+                progressBar.progress += 10*/
+                /**
+                 * 点击逻辑，删除前弹出一个确认对话框
+                 */
+                /**
+                 * 首先通过AlertDialog.Builder构建一个对话框，这里使用了Kotlin标准函数中的apply函数。
+                 * 在apply函数中为这个对话框设置标题、内容、可否使用Back键关闭对话框等属性，接下
+                 * 来调用setPositiveButton()方法为对话框设置确定按钮的点击事件，调用
+                 * setNegativeButton()方法设置取消按钮的点击事件，最后调用show()方法将对话框显示出来就可以了
+                  */
+                AlertDialog.Builder(this).apply {
+                    setTitle("Something important.")
+                    setMessage("Something important.")
+                    setCancelable(false)
+                    setPositiveButton("OK"){dialog,which->
+
+                    }
+                    setNegativeButton("Cancel"){dialog,which ->
+
+                    }
+                    show()
+                }
             }
         }
     }
