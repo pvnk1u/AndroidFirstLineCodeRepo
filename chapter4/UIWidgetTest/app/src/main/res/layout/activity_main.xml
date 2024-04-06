@@ -63,6 +63,19 @@
         android:maxLines="2"
         />
 
+    <!--
+    ImageView是用于在界面上展示图片的一个控件，它可以让程序界面变得更加丰富多彩。
+    图片通常是放在以drawable开头的目录下的，并且要带上具体的分辨率。现在最主流的手机屏幕分辨率大多是xxhdpi的。
+    ImageView标签的src属性用来指定图片路径
+
+    由于图片的宽和高都是未知的，所以将ImageView的宽和高都设定为wrap_content，
+    这样就保证了不管图片的尺寸是多少，都可以完整地展示出来。
+    -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_1" />
 
 
 </LinearLayout>

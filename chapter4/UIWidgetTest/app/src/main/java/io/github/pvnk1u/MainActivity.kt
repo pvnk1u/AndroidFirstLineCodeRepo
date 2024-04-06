@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity(),View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,10 +33,17 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.button -> {
-                // 点击逻辑,实现点击按钮时获取InputText中的输入内容并通过Toast弹窗形式弹框显示
-                val editText: EditText = findViewById(R.id.editText)
+                /**
+                 * 点击逻辑,实现点击按钮时获取InputText中的输入内容并通过Toast弹窗形式弹框显示
+                 */
+                /*val editText: EditText = findViewById(R.id.editText)
                 val inputText =  editText.text.toString()
-                Toast.makeText(this,inputText,Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,inputText,Toast.LENGTH_SHORT).show()*/
+                /**
+                 * 点击逻辑，实现点击按钮时动态地更改ImageView中图片的功能
+                 */
+                val imageView: ImageView = findViewById(R.id.imageView)
+                imageView.setImageResource(R.drawable.img_2)
             }
         }
     }
