@@ -62,6 +62,9 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
                 progressBar.progress += 10*/
                 /**
                  * 点击逻辑，删除前弹出一个确认对话框
+                 *
+                 * AlertDialog可以在当前界面弹出一个对话框，这个对话框是置顶于所有界面元素之上的，
+                 * 能够屏蔽其他控件的交互能力，因此AlertDialog一般用于提示一些非常重要的内容或者警告信息。
                  */
                 /**
                  * 首先通过AlertDialog.Builder构建一个对话框，这里使用了Kotlin标准函数中的apply函数。
