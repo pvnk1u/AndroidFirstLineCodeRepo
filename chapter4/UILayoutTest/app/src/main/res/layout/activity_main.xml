@@ -2,6 +2,17 @@
 <!--
 android:orientation="vertical"表示控件在垂直方向上排列，
 可以通过指定android:orientation="horizontal"来使控件在水平方向上排列
+
+需要注意，如果LinearLayout的排列方向是horizontal，内部的控件就绝对不能将宽度指定
+为match_parent，否则，单独一个控件就会将整个水平方向占满，其他的控件就没有可放置
+的位置了。同样的道理，如果LinearLayout的排列方向是vertical，内部的控件就不能将高
+度指定为match_parent。
+
+下面来看android:layout_gravity属性，它和android:gravity属性看起来有些相似，这两个属性有什么区别呢？其实从名字就可以看出，
+android:gravity用于指定文字在控件中的对齐方式，而android:layout_gravity用于指定控件在布局中的对齐方式。
+android:layout_gravity的可选值和android:gravity差不多，但是需要注意，当LinearLayout的排列方向是horizontal时，只有垂直方向上的对齐方式才会生效。
+因为此时水平方向上的长度是不固定的，每添加一个控件，水平方向上的长度都会改变，因而无法指定该方向上的对齐方式。
+同样的道理，当LinearLayout的排列方向是vertical时，只有水平方向上的对齐方式才会生效。
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
@@ -11,16 +22,19 @@ android:orientation="vertical"表示控件在垂直方向上排列，
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="top"
         android:text="Button 1" />
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:text="Button 2" />
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:text="Button 3" />
 
 </LinearLayout>
