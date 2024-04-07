@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+FrameLayout又称作帧布局，它相比于前面两种布局就简单太多了，因此它的应用场景少了很多。
+这种布局没有丰富的定位方式，所有的控件都会默认摆放在布局的左上角。
+
+想要改变把所有控件都摆放在布局左上角的默认行为，可以修改控件的android:layout_gravity属性
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="This is TextView"
+        />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="Button"
+        />
+
+
+</FrameLayout>
