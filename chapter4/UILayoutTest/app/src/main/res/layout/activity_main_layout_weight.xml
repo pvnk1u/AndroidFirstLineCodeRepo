@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+    android:layout_weight属性允许使用比例的方式来指定控件的大小，
+    它在手机屏幕的适配性方面可以起到非常重要的作用。
+    -->
+
+    <!--
+    这里将EditText和Button的宽度都指定成了0dp，由于使用了android:layout_weight属性，
+    此时控件的宽度就不应该再由android:layout_width来决定了，这里指定成0dp是一种比较规范的写法。
+    然后在EditText和Button里将android:layout_weight属性的值指定为1，这表示EditText
+    和Button将在水平方向平分宽度。
+    -->
+    <!--<EditText
+        android:id="@+id/input_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="Type Something" />
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Send"
+        />-->
+
+    <!--
+    这里仅指定了EditText的android:layout_weight属性，并将Button的宽度改回了wrap_content。
+    这表示Button的宽度仍然按照wrap_content来计算，而EditText则会占满屏幕所有的剩余空间。
+    使用这种方式编写的界面，不仅可以适配各种屏幕，而且看起来也更加舒服。
+    -->
+    <EditText
+        android:id="@+id/input_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="Type Something" />
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send"
+        />
+
+
+</LinearLayout>
