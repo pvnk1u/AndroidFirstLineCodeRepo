@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/title_bg"
+    >
+
+    <!--
+    可以看到，在LinearLayout中分别加入了两个Button和一个TextView，左边的Button可用于返回，右边的Button可用于编辑，中间的TextView则可以显示一段标题文本。
+    上面代码中的大多数属性是已经见过的。android:background用于为布局或控件指定一个背景，可以使用颜色或图片来进行填充。
+    这里提前准备好了3张图片——title_bg.png、back_bg.png和edit_bg.png，分别用于作为标题栏、返回按钮和编辑按钮的背景。
+    另外，在两个Button中都使用了android:layout_margin这个属性，它可以指定控件在上下左右方向上的间距。
+    当然也可以使用android:layout_marginLeft或android:layout_marginTop等属性来单独指定控件在某个方向上的间距。
+    -->
+    <Button
+        android:id="@+id/titleBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:background="@drawable/back_bg"
+        android:text="Back"
+        android:textColor="#fff" />
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Title Text"
+        android:textColor="#fff"
+        android:textSize="24sp" />
+    <Button
+        android:id="@+id/titleEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:background="@drawable/edit_bg"
+        android:text="Edit"
+        android:textColor="#fff" />
+
+
+
+</LinearLayout>
