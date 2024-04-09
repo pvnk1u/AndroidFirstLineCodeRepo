@@ -2,5 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    <include layout="@layout/title" />
+
+    <!--
+    添加自定义控件和添加普通控件的方式基本是一样的，
+    只不过在添加自定义控件的时候，需要指明控件的完整类名，包名在这里是不可以省略的。
+    -->
+    <io.github.pvnk1u.TitleLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
