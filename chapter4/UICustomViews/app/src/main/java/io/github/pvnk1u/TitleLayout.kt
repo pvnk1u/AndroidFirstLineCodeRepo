@@ -1,9 +1,12 @@
 package io.github.pvnk1u
 
+import android.app.Activity
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.Toast
 
 /**
  * 自定义的标题栏控件
@@ -20,5 +23,18 @@ class TitleLayout(context:Context,attrs: AttributeSet): LinearLayout(context,att
      */
     init {
         LayoutInflater.from(context).inflate(R.layout.title,this)
+        val titleBack : Button =  findViewById(R.id.titleBack)
+        val titleEdit : Button =  findViewById(R.id.titleEdit)
+        // 返回按钮点击事件——>销毁当前Activity
+        titleBack.setOnClickListener{
+            // context参数实际上是一个Activity的实例，在返回按钮的点击事件里，要先将它转换成Activity类型，
+            // 然后再调用finish()方法销毁当前的Activity。Kotlin中的类型强制转换使用的关键字是as。
+            val activity= context as Activity
+            activity.finish()
+        }
+        // 修改按钮点击事件
+        titleEdit.setOnClickListener{
+            Toast.makeText(context,"You clicked Edit Button",Toast.LENGTH_SHORT).show()
+        }
     }
 }
