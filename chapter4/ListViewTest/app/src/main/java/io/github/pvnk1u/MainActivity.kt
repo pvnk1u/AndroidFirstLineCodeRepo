@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         // 初始化水果数据
         initFruits()
-        val adapter = FruitAdapter(this,android.R.layout.simple_list_item_1,fruitList)
+        val adapter = FruitAdapter(this,R.layout.fruit_item,fruitList)
         val listView: ListView = findViewById(R.id.listView)
         /**
          * 最后，调用ListView的setAdapter()方法，将构建好的适配器对象传递进去，这样ListView和数据之间的关联就建立完成了。
