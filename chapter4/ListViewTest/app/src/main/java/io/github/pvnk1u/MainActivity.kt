@@ -1,8 +1,8 @@
 package io.github.pvnk1u
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -45,6 +45,16 @@ class MainActivity : AppCompatActivity() {
          * 最后，调用ListView的setAdapter()方法，将构建好的适配器对象传递进去，这样ListView和数据之间的关联就建立完成了。
          */
         listView.adapter = adapter
+        /**
+         * 设置ListView的点击事件
+         *
+         * 使用setOnItemClickListener()方法为ListView注册了一个监听器，当用户点击了ListView中的任何一个子项时，就会回调到Lambda表达式中。
+         * 这里可以通过position参数判断用户点击的是哪一个子项，然后获取到相应的水果，并通过Toast将水果的名字显示出来。
+         */
+        listView.setOnItemClickListener{parent,view,position,id->
+            val fruit = fruitList[position]
+            Toast.makeText(this,fruit.name,Toast.LENGTH_SHORT).show()
+        }
     }
 
     /**
