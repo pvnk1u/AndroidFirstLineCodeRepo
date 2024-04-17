@@ -21,6 +21,10 @@ class MainActivity : AppCompatActivity() {
          * LinearLayoutManager是线性布局的意思，可以实现和ListView类似的效果。
          */
         val layoutManager = LinearLayoutManager(this)
+        /**
+         * 设置布局方向，默认是纵向排列的，LinearLayoutManager.HORIZONTAL表示让布局横向排列
+         */
+        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = layoutManager
         /**
