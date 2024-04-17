@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 /**
@@ -40,7 +41,26 @@ class FruitAdapter(val fruitList : List<Fruit>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.fruit_item,parent,false)
-        return ViewHolder(view)
+        val viewHolder = ViewHolder(view)
+        /**
+         * 设置整个ViewHolder的默认点击事件，当ViewHolder中的子控件没有注册点击事件，
+         * 但是点击该控件时将会触发此父控件点击事件
+         */
+        viewHolder.itemView.setOnClickListener{
+            val position = viewHolder.adapterPosition
+            val fruit = fruitList[position]
+            Toast.makeText(parent.context,"you clicked view ${fruit.name}",Toast.LENGTH_SHORT).show()
+        }
+        /**
+         * 设置ViewHolder中的图片的点击事件
+         */
+        viewHolder.fruitImage.setOnClickListener{
+            val position = viewHolder.adapterPosition
+            val fruit = fruitList[position]
+            Toast.makeText(parent.context,"you clicked image ${fruit.name}",
+                Toast.LENGTH_SHORT).show()
+        }
+        return viewHolder
     }
 
     override fun getItemCount() = fruitList.size
