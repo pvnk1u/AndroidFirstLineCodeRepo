@@ -2,12 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-    <!--
-    设置Receiver可以接收开机启动广播
-    -->
+    <!--     设置Receiver可以接收开机启动广播 -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -18,16 +15,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BroadcastTest"
         tools:targetApi="31">
+
         <!--
-        定义BroadcastReceiver
+        自定义广播的接收器配置
         -->
+        <receiver
+            android:name=".MyBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="io.github.pvnk1u.MY_BROADCAST" />
+            </intent-filter>
+        </receiver>
+        <!--         定义BroadcastReceiver -->
         <receiver
             android:name=".BootCompleteReceiver"
             android:enabled="true"
             android:exported="true">
-            <!--
-            设置此Receiver要拦截的广播，此处为拦截android.intent.action.BOOT_COMPLETED的开机广播
-            -->
+
+            <!--             设置此Receiver要拦截的广播，此处为拦截android.intent.action.BOOT_COMPLETED的开机广播 -->
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
