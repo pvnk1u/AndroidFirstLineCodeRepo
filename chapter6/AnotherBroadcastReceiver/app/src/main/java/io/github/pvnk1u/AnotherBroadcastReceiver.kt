@@ -5,17 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 
-/**
- * 自定义广播
- */
-class MyBroadcastReceiver : BroadcastReceiver() {
+class AnotherBroadcastReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-        Toast.makeText(context,"received in MyBroadcastReceiver",
+        Toast.makeText(context,"received in AnotherBroadcastReceiver",
             Toast.LENGTH_SHORT).show()
-        /**
-         * 终止有序广播的传递
-         */
-        abortBroadcast()
     }
 }
