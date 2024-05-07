@@ -19,7 +19,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         // 调用自定义的SQLiteHelper执行创建数据库表的功能
-        val dbHelper = MyDatabaseHelper(this, "BookStore.db", 1)
+        /**
+         * 第三个参数用于指定数据库版本号，当后续的版本号比最开始的版本号大时，会触发MyDatabaseHelper的onUpgrade方法，用于升级数据库
+         */
+        val dbHelper = MyDatabaseHelper(this, "BookStore.db", 2)
         val createDatabase : Button = findViewById(R.id.createDatabase)
         createDatabase.setOnClickListener {
             dbHelper.writableDatabase
