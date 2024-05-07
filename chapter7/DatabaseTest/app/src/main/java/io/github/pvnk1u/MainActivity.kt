@@ -112,5 +112,35 @@ class MainActivity : AppCompatActivity() {
             cursor.close()
         }
 
+        /**
+         * 使用事务
+         */
+        val replaceData : Button = findViewById(R.id.replaceData)
+        replaceData.setOnClickListener{
+            val db = dbHelper.writableDatabase
+            // 开启事务
+            db.beginTransaction()
+            try {
+                db.delete("Book",null,null)
+                if (true){
+                    throw NullPointerException()
+                }
+                val values = ContentValues().apply {
+                    put("name","Game of Thrones")
+                    put("author","George Martin")
+                    put("pages",720)
+                    put("price",20.85)
+                }
+                db.insert("Book",null,values)
+                // 事务已经执行成功
+                db.setTransactionSuccessful()
+            }catch (e: Exception){
+                e.printStackTrace()
+            }finally {
+                // 结束事务
+                db.endTransaction()
+            }
+        }
+
     }
 }

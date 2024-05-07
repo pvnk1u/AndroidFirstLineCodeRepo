@@ -46,4 +46,13 @@
         />
 
 
+    <!--替换数据，使用事务-->
+    <Button
+        android:id="@+id/replaceData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Replace Data"
+        />
+
+
 </LinearLayout>
