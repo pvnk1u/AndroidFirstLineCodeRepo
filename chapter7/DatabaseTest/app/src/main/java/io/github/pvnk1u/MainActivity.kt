@@ -1,5 +1,6 @@
 package io.github.pvnk1u
 
+import android.content.ContentValues
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -27,5 +28,33 @@ class MainActivity : AppCompatActivity() {
         createDatabase.setOnClickListener {
             dbHelper.writableDatabase
         }
+
+
+        /**
+         * 增加数据的逻辑
+         */
+        val addData : Button = findViewById(R.id.addData)
+        addData.setOnClickListener{
+            val db = dbHelper.writableDatabase
+            val values1 = ContentValues().apply{
+                // 开始组装第一条数据
+                put("name","The Da Vinci Code")
+                put("author","Dan Brown")
+                put("ages",454)
+                put("price",16.96)
+            }
+            // 插入第一条数据
+            db.insert("Book",null,values1)
+            val values2 = ContentValues().apply {
+                // 开始组装第二条数据
+                put("name","The Lost symbol")
+                put("author","Dan Brown")
+                put("ages",510)
+                put("price",19.95)
+            }
+            // 插入第二条数据
+            db.insert("Book",null,values2)
+        }
+
     }
 }

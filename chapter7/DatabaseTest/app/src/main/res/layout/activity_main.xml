@@ -13,5 +13,13 @@
         android:text="Create Database"
         />
 
+    <!--在这个按钮的点击事件里编写添加数据的逻辑-->
+    <Button
+        android:id="@+id/addData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Data"
+        />
+
 
 </LinearLayout>
