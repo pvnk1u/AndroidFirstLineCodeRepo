@@ -21,5 +21,29 @@
         android:text="Add Data"
         />
 
+    <!--更新数据的按钮-->
+    <Button
+        android:id="@+id/updateData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Data"
+        />
+
+    <!--删除数据的按钮-->
+    <Button
+        android:id="@+id/deleteData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Data"
+        />
+
+    <!--查询数据的按钮-->
+    <Button
+        android:id="@+id/queryData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Query Data"
+        />
+
 
 </LinearLayout>
