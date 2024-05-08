@@ -3,6 +3,7 @@ package io.github.pvnk1u
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
+import android.util.Log
 
 class MyService : Service() {
 
@@ -15,6 +16,7 @@ class MyService : Service() {
      */
     override fun onCreate() {
         super.onCreate()
+        Log.d("MyService","onCreate executed")
     }
 
     /**
@@ -23,6 +25,7 @@ class MyService : Service() {
      * 通常情况下，如果我们希望Service一旦启动就立刻去执行某个动作，就可以将逻辑写在onStartCommand()方法里。
      */
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
+        Log.d("MyService","onStartCommand executed")
         return super.onStartCommand(intent, flags, startId)
     }
 
@@ -33,5 +36,6 @@ class MyService : Service() {
      */
     override fun onDestroy() {
         super.onDestroy()
+        Log.d("MyService","onDestroy executed")
     }
 }

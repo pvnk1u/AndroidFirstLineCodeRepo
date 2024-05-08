@@ -12,12 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceTest"
         tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <!--每一个Service都需要在AndroidManifest.xml文件中进行注册才能生效。-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 每一个Service都需要在AndroidManifest.xml文件中进行注册才能生效。 -->
         <service
             android:name=".MyService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
     </application>
 
 </manifest>
