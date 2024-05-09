@@ -2,13 +2,38 @@ package io.github.pvnk1u
 
 import android.app.Service
 import android.content.Intent
+import android.os.Binder
 import android.os.IBinder
 import android.util.Log
 
 class MyService : Service() {
 
+    /**
+     * 创建了DownloadBinder的实例
+     *
+     */
+    private val mBinder = DownloadBinder()
+
+    /**
+     * 继承自Binder，然后在它的内部提供了开始下载以及查看下载进度的方法。
+     * 当然这只是两个模拟方法，并没有实现真正的功能，我们在这两个方法中分别打印了一行日志
+     */
+    class DownloadBinder : Binder(){
+        fun startDownload(){
+            Log.d("MyService","startDownload executed")
+        }
+
+        fun getProgress(): Int{
+            Log.d("MyService","getProgress executed")
+            return 0
+        }
+    }
+
+    /**
+     * 在onBind()方法里返回了这个实例
+     */
     override fun onBind(intent: Intent): IBinder {
-        TODO("Return the communication channel to the service.")
+        return mBinder
     }
 
     /**
