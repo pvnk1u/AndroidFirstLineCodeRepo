@@ -1,10 +1,18 @@
 package io.github.pvnk1u
 
+import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.app.Service
+import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Binder
+import android.os.Build
 import android.os.IBinder
 import android.util.Log
+import androidx.core.app.NotificationCompat
 
 class MyService : Service() {
 
@@ -39,9 +47,35 @@ class MyService : Service() {
     /**
      * onCreate()方法会在Service创建的时候调用
      */
+    @SuppressLint("ForegroundServiceType")
     override fun onCreate() {
         super.onCreate()
         Log.d("MyService","onCreate executed")
+        /**
+         * 以下为创建前台Service的代码
+         */
+        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as
+                NotificationManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel("my_service", "前台Service通知",
+                NotificationManager.IMPORTANCE_DEFAULT)
+            manager.createNotificationChannel(channel)
+        }
+        val intent = Intent(this, MainActivity::class.java)
+        val pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+        val notification = NotificationCompat.Builder(this, "my_service")
+            .setContentTitle("This is content title")
+            .setContentText("This is content text")
+            .setSmallIcon(R.drawable.small_icon) 
+            .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.large_icon))
+            .setContentIntent(pi)
+            .build()
+        /**
+         * 这个方法接收两个参数：第一个参数是通知的id，类似于notify()方法的第一个参数；第二个参数则是
+         * 构建的Notification对象。调用startForeground()方法后就会让MyService变成一个前
+         * 台Service，并在系统状态栏显示出来。
+         */
+        startForeground(1, notification)
     }
 
     /**
