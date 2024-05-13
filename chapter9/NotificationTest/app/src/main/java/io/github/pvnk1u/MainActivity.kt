@@ -2,7 +2,9 @@ package io.github.pvnk1u
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
@@ -34,6 +36,11 @@ class MainActivity : AppCompatActivity() {
         val sendNotice : Button = findViewById(R.id.sendNotice)
         sendNotice.setOnClickListener{
             /**
+             * 构建PendingIntent，用于通知点击事件时跳转向其他Activity
+             */
+            val intent = Intent(this,NotificationActivity::class.java)
+            val pi = PendingIntent.getActivity(this,0,intent, PendingIntent.FLAG_IMMUTABLE)
+            /**
              * 注意，在NotificationCompat.Builder的构造函数中传入的渠道ID也必须叫
              * normal，如果传入了一个不存在的渠道ID，通知是无法显示出来的。
              */
@@ -43,6 +50,10 @@ class MainActivity : AppCompatActivity() {
                 .setSmallIcon(R.drawable.small_icon)
                 .setLargeIcon(BitmapFactory.decodeResource(resources,
                     R.drawable.large_icon))
+                /**
+                 * 设置此通知的点击事件
+                 */
+                .setContentIntent(pi)
                 .build()
             manager.notify(1,notification)
         }
