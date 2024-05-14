@@ -26,6 +26,10 @@ class MainActivity : AppCompatActivity() {
              *
              * 创建通知渠道的代码只在第一次执行的时候才会创建，当下次再执行创建代码时，系统会
              * 检测到该通知渠道已经存在了，因此不会重复创建，也并不会影响运行效率。
+             *
+             * 创建渠道时要考虑好渠道的重要性
+             * 设置为高可以不仅在状态栏弹出通知，且可以实现不管用户现在是在玩游戏还是看电影，这条
+             * 通知都会显示在最上方的效果，以此引起用户的注意。
              */
             val channel = NotificationChannel("normal","Normal",NotificationManager.IMPORTANCE_DEFAULT)
             manager.createNotificationChannel(channel)
