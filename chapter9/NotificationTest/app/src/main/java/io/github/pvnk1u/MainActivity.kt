@@ -54,6 +54,10 @@ class MainActivity : AppCompatActivity() {
                  * 设置此通知的点击事件
                  */
                 .setContentIntent(pi)
+                /**
+                 * 设置通知点击后自动关闭显示
+                 */
+                .setAutoCancel(true)
                 .build()
             manager.notify(1,notification)
         }
