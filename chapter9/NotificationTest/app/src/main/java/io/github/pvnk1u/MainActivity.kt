@@ -58,6 +58,16 @@ class MainActivity : AppCompatActivity() {
                  * 设置通知点击后自动关闭显示
                  */
                 .setAutoCancel(true)
+                /**
+                 * 默认是短文本通知，文本较长显示不全时可以使用setStyle设置内容
+                 */
+                /*.setStyle(NotificationCompat.BigTextStyle().bigText("Learn how to build notifications, send and sync data, " +
+                        "and use voice actions. Get the official Android IDE and developer tools to build apps for Android."))*/
+                /**
+                 * 除了显示长文字之外，通知里还可以显示一张大图片，具体用法是基本相似的
+                 */
+                /*.setStyle(NotificationCompat.BigPictureStyle().bigPicture(
+                    BitmapFactory.decodeResource(resources, R.drawable.big_image)))*/
                 .build()
             manager.notify(1,notification)
         }
