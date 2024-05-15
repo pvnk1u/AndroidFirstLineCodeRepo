@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
@@ -19,10 +21,41 @@ class MainActivity : AppCompatActivity() {
          */
         val sendRequestBtn: Button = findViewById(R.id.sendRequestBtn)
         sendRequestBtn.setOnClickListener{
-            sendRequestWithHttpURLConnection()
+            /**
+             * 第一种方式：HttpURLConnection方式发送HTTP请求
+             */
+            // sendRequestWithHttpURLConnection()
+            /**
+             * 第二种方式：OkHttp方式发送HTTP请求
+             */
+            sendRequestWithOkHttp()
         }
     }
 
+    /**
+     * 使用OkHttp发送Http请求
+     */
+    private fun sendRequestWithOkHttp(){
+        thread {
+            try {
+                val client = OkHttpClient()
+                val request = Request.Builder()
+                    .url("https://www.bing.com")
+                    .build()
+                val response = client.newCall(request).execute()
+                val responseData = response.body?.string()
+                if (responseData != null) {
+                    showResponse(responseData)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    /**
+     * 通过HttpURLConnection发送Http请求
+     */
     private fun sendRequestWithHttpURLConnection(){
         // 开启线程发起网络请求
         thread {
