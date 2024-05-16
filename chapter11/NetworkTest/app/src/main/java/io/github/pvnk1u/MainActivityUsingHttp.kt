@@ -12,7 +12,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 import kotlin.concurrent.thread
 
-class MainActivity : AppCompatActivity() {
+class MainActivityUsingHttp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
