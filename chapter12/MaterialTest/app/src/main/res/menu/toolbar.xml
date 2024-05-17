@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--
+    通过<item>标签来定义action按钮，android:id用于指定按钮的id，
+    android:icon用于指定按钮的图标，android:title用于指定按钮的文字。
+
+    因为Backup按钮指定的显示位置是always，Delete按钮指定的显示位置是ifRoom，
+    而现在屏幕空间很充足，因此两个按钮都会显示在Toolbar中。
+    另外一个Settings按钮由于指定的显示位置是never，所以不会显示在Toolbar中，
+    点击一下最右边的菜单按钮来展开菜单项，就能找到Settings按钮了。
+    -->
+    <item
+        android:id="@+id/backup"
+        android:icon="@drawable/ic_backup"
+        android:title="Backup"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/delete"
+        android:icon="@drawable/ic_delete"
+        android:title="Delete"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_settings"
+        android:title="Settings"
+        app:showAsAction="never" />
+</menu>
