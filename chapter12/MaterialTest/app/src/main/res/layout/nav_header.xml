@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+布局文件的最外层是一个RelativeLayout，我们将它的宽度设为match_parent，
+高度设为180 dp，这是一个NavigationView比较适合的高度，然后指定它的背景色为colorPrimary。
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:padding="10dp"
+    android:background="@color/design_default_color_primary">
+    <!--
+    在RelativeLayout中我们放置了3个控件，CircleImageView是一个用于将图片圆形化的控
+    件，它的用法非常简单，基本和ImageView是完全一样的，这里给它指定了一张图片作为头
+    像，然后设置为居中显示。另外两个TextView分别用于显示用户名和邮箱地址
+    -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iconImage"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/nav_icon"
+        android:layout_centerInParent="true" />
+    <TextView
+        android:id="@+id/mailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="tonygreendev@gmail.com"
+        android:textColor="#FFF"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@+id/userText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/mailText"
+        android:text="Tony Green"
+        android:textColor="#FFF"
+        android:textSize="14sp" />
+</RelativeLayout>

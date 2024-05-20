@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 
 class DrawerLayoutMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +27,23 @@ class DrawerLayoutMainActivity : AppCompatActivity() {
         supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
             it.setHomeAsUpIndicator(R.drawable.ic_menu)
+        }
+        val navView: NavigationView = findViewById(R.id.navView)
+        val drawerLayout :DrawerLayout = findViewById(R.id.drawerLayout)
+        /**
+         * 首先调用了NavigationView的setCheckedItem()方法将Call菜单项设置为默认选中
+         */
+        navView.setCheckedItem(R.id.navCall)
+        /**
+         * 调用了setNavigationItemSelectedListener()方法来设置一个菜单项选中事件的监听器，
+         * 当用户点击了任意菜单项时，就会回调到传入的Lambda表达式当中
+         */
+        navView.setNavigationItemSelectedListener {
+            /**
+             * 这里调用了DrawerLayout的closeDrawers()方法将滑动菜单关闭，并返回true表示此事件已被处理。
+             */
+            drawerLayout.closeDrawers()
+            true
         }
     }
 

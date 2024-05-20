@@ -42,6 +42,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    /*添加了两行依赖关系：第一行就是Material库，第二行是一个开源项目CircleImageView，它可以用来轻松实现图片圆形化的功能*/
+    implementation("com.google.android.material:material:1.1.0")
+    implementation("de.hdodenhof:circleimageview:3.0.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -20,11 +20,16 @@
     </FrameLayout>
 
 
-    <TextView
+    <!--
+    设置滑动菜单中的内容是NavigationView导航视图
+
+    通过app:menu和app:headerLayout属性将准备好的nav_menu.xml和nav_header.xml设置了进去
+    -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#FFF"
-        android:text="This is menu"
-        android:textSize="30sp" />
+        app:menu="@menu/nav_menu"
+        app:headerLayout="@layout/nav_header"/>
 </androidx.drawerlayout.widget.DrawerLayout>
