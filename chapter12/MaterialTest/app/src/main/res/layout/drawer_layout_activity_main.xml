@@ -7,7 +7,12 @@
     android:layout_height="match_parent">
 
 
-    <FrameLayout
+    <!--
+    CoordinatorLayout是一个加强版的FrameLayout，由AndroidX库提供。
+    它在普通情况下的作用和FrameLayout基本一致，但是它可以监听所有子控件的各种事件，并自动做出最合理的响应，
+    比如保证各个组件自动调整位置，不会被新弹出的控件遮挡。
+    -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.appcompat.widget.Toolbar
@@ -34,7 +39,7 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
             android:src="@drawable/ic_done" />
-    </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
     <!--
