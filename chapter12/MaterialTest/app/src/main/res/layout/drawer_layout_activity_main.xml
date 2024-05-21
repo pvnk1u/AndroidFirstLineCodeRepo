@@ -17,6 +17,23 @@
             android:background="@color/design_default_color_primary"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <!--
+        FloatingActionButton 悬浮按钮
+        layout_width和layout_height属性都指定成wrap_content，
+        layout_gravity属性指定将这个控件放置于屏幕的右下角。
+        其中end的工作原理和之前的start是一样的，即如果系统语言是从左往右的，
+        那么end就表示在右边，如果系统语言是从右往左的，那么end就表示在左边。
+        然后通过layout_margin属性给控件的四周留点边距，紧贴着屏幕边缘肯定是不好看的，
+        最后通过src属性给FloatingActionButton设置了一个图标。
+        -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_done" />
     </FrameLayout>
 
 
