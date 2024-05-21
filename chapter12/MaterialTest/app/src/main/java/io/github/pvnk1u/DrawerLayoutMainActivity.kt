@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 
 class DrawerLayoutMainActivity : AppCompatActivity() {
@@ -44,6 +45,13 @@ class DrawerLayoutMainActivity : AppCompatActivity() {
              */
             drawerLayout.closeDrawers()
             true
+        }
+        /**
+         * 设置FloatingActionButton的点击事件，和普通按钮的用法没有太大区别
+         */
+        val fab : FloatingActionButton = findViewById(R.id.fab)
+        fab.setOnClickListener{
+            Toast.makeText(this,"FAB  clicked",Toast.LENGTH_SHORT).show()
         }
     }
 
