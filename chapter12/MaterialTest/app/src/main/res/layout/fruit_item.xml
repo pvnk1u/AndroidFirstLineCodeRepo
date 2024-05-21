@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+使用了MaterialCardView来作为子项的最外层布局，从而使得RecyclerView中的每个元
+素都是在卡片当中的。由于MaterialCardView是一个FrameLayout，因此它没有什么方便的
+定位方式，这里我们只好在MaterialCardView中再嵌套一个LinearLayout，然后在
+LinearLayout中放置具体的内容。
+-->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--
+        使用了一个scaleType属性，这个属性可以指定图片的缩放模式。由于各张水果图片的长宽比例可能会不一致，
+        为了让所有的图片都能填充满整个ImageView，这里使用了centerCrop模式，
+        它可以让图片保持原有比例填充满ImageView，并将超出屏幕的部分裁剪掉。
+        -->
+        <ImageView
+            android:id="@+id/fruitImage"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/fruitName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:textSize="16sp" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

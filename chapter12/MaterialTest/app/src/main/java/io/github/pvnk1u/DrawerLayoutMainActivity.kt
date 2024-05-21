@@ -8,11 +8,26 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 
 class DrawerLayoutMainActivity : AppCompatActivity() {
+
+    /**
+     * 定义了一个水果集合，集合里面存放了很多个Fruit的实例，每个实例都代表一种水果
+     */
+    val fruits = mutableListOf(Fruit("Apple", R.drawable.apple), Fruit("Banana",
+        R.drawable.banana), Fruit("Orange", R.drawable.orange), Fruit("Watermelon",
+        R.drawable.watermelon), Fruit("Pear", R.drawable.pear), Fruit("Grape",
+        R.drawable.grape), Fruit("Pineapple", R.drawable.pineapple), Fruit("Strawberry",
+        R.drawable.strawberry), Fruit("Cherry", R.drawable.cherry), Fruit("Mango",
+        R.drawable.mango))
+
+    val fruitList = ArrayList<Fruit>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.drawer_layout_activity_main)
@@ -68,6 +83,39 @@ class DrawerLayoutMainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Data restored", Toast.LENGTH_SHORT).show()
                 }
                 .show()
+        }
+
+
+        /**
+         * 加载水果数据到列表中
+         */
+        initFruits()
+        val layoutManager = GridLayoutManager(this, 2)
+
+        /**
+         * 这里使用了GridLayoutManager这种布局方式。
+         * GridLayoutManager的用法也没有什么特别之处，它的构造函数接收两个参数：
+         * 第一个是Context，第二个是列数。这里我们希望每一行中会有两列数据。
+         */
+        val recyclerView : RecyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = layoutManager
+        val adapter = FruitAdapter(this, fruitList)
+        recyclerView.adapter = adapter
+    }
+
+    /**
+     * 初始化水果数据
+     */
+    private fun initFruits() {
+        /**
+         * 先是清空了一下fruitList中的数据，接着使用一个随机函数，
+         * 从刚才定义的Fruit数组中随机挑选一个水果放入fruitList当中，这样每次打开程序看到的水果数据都会是不同的。
+         * 另外，为了让界面上的数据多一些，这里使用了repeat()函数，随机挑选50个水果。
+         */
+        fruitList.clear()
+        repeat(50) {
+            val index = (0 until fruits.size).random()
+            fruitList.add(fruits[index])
         }
     }
 
