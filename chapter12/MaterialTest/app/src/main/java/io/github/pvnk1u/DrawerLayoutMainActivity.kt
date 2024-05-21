@@ -10,6 +10,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 
 class DrawerLayoutMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,8 +51,23 @@ class DrawerLayoutMainActivity : AppCompatActivity() {
          * 设置FloatingActionButton的点击事件，和普通按钮的用法没有太大区别
          */
         val fab : FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener{
+        /*fab.setOnClickListener{
             Toast.makeText(this,"FAB  clicked",Toast.LENGTH_SHORT).show()
+        }*/
+        /**
+         * 调用了Snackbar的make()方法来创建一个Snackbar对象。make()方法的第一个参数需要传入一个View，
+         * 只要是当前界面布局的任意一个View都可以，Snackbar会使用这个View自动查找最外层的布局，用于展示提示信息；
+         * 第二个参数就是Snackbar中显示的内容；第三个参数是Snackbar显示的时长，这些和Toast都是类似的。
+         *
+         * 接着这里又调用了一个setAction()方法来设置一个动作，从而让Snackbar不仅仅是一个提示，
+         * 而是可以和用户进行交互的。简单起见，我们在动作按钮的点击事件里面弹出一个Toast提示。最后调用show()方法让Snackbar显示出来。
+         */
+        fab.setOnClickListener{view->
+            Snackbar.make(view, "Data deleted", Snackbar.LENGTH_SHORT)
+                .setAction("Undo") {
+                    Toast.makeText(this, "Data restored", Toast.LENGTH_SHORT).show()
+                }
+                .show()
         }
     }
 
