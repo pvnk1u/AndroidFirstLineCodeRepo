@@ -40,15 +40,31 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+
+        <!--使用SwipeRefreshLayout将需要下拉刷新的RecyclerView包括，
+        这样RecyclerView就自动拥有下拉刷新功能了，另外需要注意，
+        由于RecyclerView现在变成了SwipeRefreshLayout的子控件，
+        因此之前使用app:layout_behavior声明的布局行为现在
+        也要移到SwipeRefreshLayout中才行。-->
+
         <!--
-        使用app:layout_behavior属性指定了一个布局行为。
-        其中appbar_scrolling_view_behavior这个字符串也是由Material库提供的
-        -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            使用app:layout_behavior属性指定了一个布局行为。
+            其中appbar_scrolling_view_behavior这个字符串也是由Material库提供的
+            -->
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                 />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <!--
         FloatingActionButton 悬浮按钮

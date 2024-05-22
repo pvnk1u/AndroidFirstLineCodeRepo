@@ -10,9 +10,11 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import kotlin.concurrent.thread
 
 class DrawerLayoutMainActivity : AppCompatActivity() {
 
@@ -101,6 +103,37 @@ class DrawerLayoutMainActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
         val adapter = FruitAdapter(this, fruitList)
         recyclerView.adapter = adapter
+
+
+        /**
+         * 设置下拉刷新效果
+         */
+        val swipeRefresh : SwipeRefreshLayout = findViewById(R.id.swipeRefresh)
+        /**
+         * 调用SwipeRefreshLayout的setColorSchemeResources()方法来设置下拉刷新进度条的颜色，
+         */
+        swipeRefresh.setColorSchemeResources(com.google.android.material.R.color.design_default_color_primary)
+        /**
+         * 调用setOnRefreshListener()方法来设置一个下拉刷新的监听器，当用户进行了下拉刷新操作时，就会回调到Lambda表达式当中，然后我们在这里去处理具体的刷新逻辑就可以了。
+         */
+        swipeRefresh.setOnRefreshListener {
+            refreshFruits(adapter)
+        }
+    }
+
+    /**
+     * 刷新水果列表
+     */
+    private fun refreshFruits(adapter: FruitAdapter) {
+        val swipeRefresh : SwipeRefreshLayout = findViewById(R.id.swipeRefresh)
+        thread {
+            Thread.sleep(2000)
+            runOnUiThread {
+                initFruits()
+                adapter.notifyDataSetChanged()
+                swipeRefresh.isRefreshing = false
+            }
+        }
     }
 
     /**

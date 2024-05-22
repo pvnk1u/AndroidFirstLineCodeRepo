@@ -48,6 +48,8 @@ dependencies {
     /*添加RecyclerView实现列表效果*，添加了Glide库的依赖。Glide是一个超级强大的开源图片加载库*/
     implementation("androidx.recyclerview:recyclerview:1.0.0")
     implementation("com.github.bumptech.glide:glide:4.9.0")
+    /*下拉刷新支持组件*/
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
